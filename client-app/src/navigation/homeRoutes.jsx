@@ -1,23 +1,23 @@
 import MyNavbar from "../components/MyNavbar/MyNavbar";
 import CreateAppointmentPage from "../pages/appointmentspage/createAppointmentPage";
 import SeeAppointmentPage from "../pages/appointmentspage/seeAppointmentPage";
-import { Route, Routes, Outlet, useNavigate } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import HomePage from "../pages/homepage/homePage";
 import ServicePage from "../pages/servicePage/servicePage";
 import AboutPage from "../pages/aboutpage/aboutPage";
 import { useAuth } from "../context/AuthContext";
+import PageNotAuthorized from "../pages/pagenotauthorized/pageNotAuthorized";
 function HomeRoutes() {
   const { authenticated } = useAuth(); 
-  const navigate = useNavigate();
 
   if (!authenticated) {
-    navigate('/'); 
-    return null;
+    alert("You need to login first!")
+    return <PageNotAuthorized/>;
   }
   return (
     <>
       <MyNavbar />
-      <main className="p-3">
+      <main className="p-3 bg-secondary">
         <Routes>
           <Route index element={<HomePage/> } />
           <Route path='/services' element={<ServicePage/>} />

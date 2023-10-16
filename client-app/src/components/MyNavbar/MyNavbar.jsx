@@ -9,10 +9,8 @@ import axios from 'axios';
 
 
 function MyNavbar() {
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [appointmentData, setAppointmentData] = useState({
-    AppointmentTicketNo: '',
     FullName: '',
     PhoneNo: '',
     Doctor: '', 
@@ -46,7 +44,6 @@ function MyNavbar() {
     axios.post('http://localhost:5000/api/appointments', appointmentData)
       .then(() => {
         setAppointmentData({
-          AppointmentTicketNo: '',
           FullName: '',
           PhoneNo: '',
           Doctor: '', 
@@ -57,6 +54,10 @@ function MyNavbar() {
         setShow(false)
       })
       .catch(err => console.log(err));
+  }
+
+  const handleLogout = () => {
+    alert("Are you sure you want to logout?");
   }
 
   const handleInputChange = (e) => {
@@ -70,19 +71,26 @@ function MyNavbar() {
   const handleShow = () => setShow(true);
   return (
     <>
-      <Navbar bg="primary" variant="dark" expand="lg p-2">
-        <Navbar.Brand as={Link} to="/home">Tooth Specialist</Navbar.Brand>
+      <Navbar bg="primary" variant="dark" expand="lg p-2" className='shadow'>
+        <Navbar.Brand as={Link} to="/home">
+          <img src='/logo.png' width={35} alt='logo'/>
+          Tooth Specialist
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto p-2">
+          <Nav className="mr-auto p-2 gap-2">
             <Nav.Link as={Link} to="/home">Our Dentist</Nav.Link>
             <Nav.Link as={Link} to="/home/services">Services</Nav.Link>
             <Nav.Link as={Link} to="/home/about">About us</Nav.Link>
-            <Button variant="primary" onClick={handleShow}>
-              Book an apppointment
-            </Button>            
+        
             <Nav.Link as={Link} to="/home/appointments">My Appointments</Nav.Link>
-            <Nav.Link as={Link} to="/">Logout</Nav.Link>
+            <Nav.Link 
+              onClick={handleShow}
+              className='bg-light text-dark p-2 rounded' 
+              style={{width: 'fit-content'}}>
+              Book an appointment
+            </Nav.Link>  
+            <Nav.Link as={Link} to="/" onClick={handleLogout} className='bg-danger p-2 rounded' style={{width: 'fit-content'}}>Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -92,17 +100,6 @@ function MyNavbar() {
       </Modal.Header>
       <Form onSubmit={onSubmit}>
       <Modal.Body>
-        <Form.Group className="mb-3" controlId="AppointmentTicketNo">
-          <Form.Label>Appointment Ticket No.</Form.Label>
-          <Form.Control
-            type="text"
-            name="AppointmentTicketNo"
-            value={appointmentData.AppointmentTicketNo}
-            onChange={handleInputChange}
-            required
-          />
-        </Form.Group>
-
         <Form.Group className="mb-3" controlId="FullName">
           <Form.Label>Full Name</Form.Label>
           <Form.Control

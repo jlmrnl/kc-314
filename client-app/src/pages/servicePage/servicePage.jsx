@@ -34,13 +34,13 @@ const imageStyles = {
 
 const ServicePage = () => {
   return (
-    <Container>
-      <h1>Our Services</h1>
+    <Container className='min-vh-100'>
+      <h1 className='text-white'>Our Services</h1>
       <Row>
         {services.map((service, index) => (
           <Col key={index} lg={4} md={6} sm={12}>
-            <Card className="mb-4">
-              <Image src={service.image} alt={service.title} style={imageStyles} rounded />
+            <Card className="mb-4" style={{height: 350,}} >
+              <Image src={service.image} alt={service.title} style={imageStyles} rounded  />
               <Card.Body>
                 <Card.Title>{service.title}</Card.Title>
                 <Card.Text>{service.description}</Card.Text>

@@ -3,7 +3,7 @@ import SeeAppointments from '../../components/appointmentsbox/seeAppointment'
 
 function seeAppointmentPage() {
   return (
-    <div>
+    <div className='min-vh-100'>
       <SeeAppointments/>
     </div>
   )

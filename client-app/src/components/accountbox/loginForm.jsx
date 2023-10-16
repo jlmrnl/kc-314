@@ -17,13 +17,14 @@ function LoginForm() {
       .post('http://localhost:5000/api/users/login', { UserEmail, UserPassword })
       .then(() => {
         login();
+        alert("You have successfully logged in!")
         navigate('/home')
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center" style={{width: '100%', maxWidth: 500}}>
       <Card>
         <Card.Body>
           <Card.Title>Login to continue</Card.Title>
@@ -35,6 +36,7 @@ function LoginForm() {
                 value={UserEmail}
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="Password">
@@ -44,13 +46,14 @@ function LoginForm() {
                 value={UserPassword}
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </Form.Group>
             <Button variant="primary" type="submit">
               Login
             </Button>
             <Button variant="secondary m-2" onClick={() => navigate('/sign-up')}>
-              Create User
+              Sign Up
             </Button>
           </Form>
         </Card.Body>

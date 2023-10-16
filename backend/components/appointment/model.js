@@ -1,7 +1,12 @@
 module.exports = (sequelize, Sequelize) => {
+  //Appointments Schema
   const Appointment = sequelize.define('appointment', {
-    AppointmentTicketNo: {
-      type: Sequelize.STRING,
+    //attributes
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      allowNull: false
     },
     FullName: {
       type: Sequelize.STRING,
@@ -13,10 +18,10 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
     },
     AppointmentTime: {
-      type: Sequelize.STRING,
+      type: Sequelize.TIME,
     },
     AppointmentDate: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATEONLY,
     },
     Services: {
       type: Sequelize.STRING,

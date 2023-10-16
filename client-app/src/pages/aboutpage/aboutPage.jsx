@@ -8,12 +8,12 @@ const AboutPage = () => {
       marginTop: '20px',
       fontSize: '2rem',
       fontWeight: 'bold',
-      color: '#333',
+      color: '#fff',
       marginBottom: '20px',
       textAlign: 'center',
     },
     text: {
-      color: '#666',
+      color: '#fff',
       fontSize: '1.2rem',
       textAlign: 'center',
     },
@@ -27,7 +27,7 @@ const AboutPage = () => {
   };
 
   return (
-    <Container>
+    <Container className='min-vh-100'>
       <h1 style={customStyles.header}>About Us</h1>
       <p style={customStyles.text}>
         We know that going to the dentist can be difficult sometimes, so we do everything we can to make sure you're relaxed and comfortable. Our first priority is to treat you as we want to be treated: with respect, patience, and clarity.
@@ -36,9 +36,10 @@ const AboutPage = () => {
       <Image src={About} alt="Clinic Interior" fluid style={customStyles.image} />
       <h2 style={customStyles.header}>Our History</h2>
       <p style={customStyles.text}>
-      We want you to feel as comfortable as possible. That's been our goal from the very first
- day when we opened the clinic with a single dentist . Now, 25 years later and with ten professional dentists,
- it remains as true as ever.      </p>
+        We want you to feel as comfortable as possible. That's been our goal from the very first
+        day when we opened the clinic with a single dentist . Now, 25 years later and with ten professional dentists,
+        it remains as true as ever.      
+      </p>
     </Container>
   );
 };

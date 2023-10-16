@@ -27,13 +27,13 @@ const dentists = [
 
 const HomePage = () => {
   return (
-    <Container>
-      <h1>Meet Our Dentists</h1>
+    <Container className='min-vh-100'>
+      <h1 className='text-white'>Meet Our Dentists</h1>
       <Row >
         {dentists.map((dentist, index) => (
           <Col key={index} lg={4} md={6} sm={12}>
-            <Card>
-              <Card.Img variant="top" src={dentist.image} alt={dentist.name} />
+            <Card className='mb-4'>
+              <Card.Img variant="top object-fit-cover" src={dentist.image} alt={dentist.name} height={350} />
               <Card.Body>
                 <Card.Title>{dentist.name}</Card.Title>
                 <Card.Text>{dentist.description}</Card.Text>

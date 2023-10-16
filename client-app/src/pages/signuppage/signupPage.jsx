@@ -3,7 +3,7 @@ import SignUpForm from '../../components/accountbox/signupForm'
 
 function signupPage() {
   return (
-    <div>
+    <div className='vh-100 d-flex justify-content-center align-items-center bg-primary bg-gradient'>
       <SignUpForm/>
     </div>
   )

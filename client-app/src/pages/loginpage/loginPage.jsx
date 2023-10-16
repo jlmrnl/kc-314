@@ -3,7 +3,7 @@ import LoginForm from '../../components/accountbox/loginForm'
 
 function loginPage() {
   return (
-    <div>
+    <div className='vh-100 d-flex justify-content-center align-items-center bg-primary bg-gradient'>
       <LoginForm/>
     </div>
   )

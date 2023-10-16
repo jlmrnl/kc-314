@@ -23,7 +23,7 @@ function SeeAppointment() {
 
   return (
     <div className="table-responsive">
-      <h1>My Appointments</h1>
+      <h1 className='text-white'>My Appointments</h1>
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -38,9 +38,11 @@ function SeeAppointment() {
           </tr>
         </thead>
         <tbody>
-          {appointments.map(appointment => (
+          {appointments.length === 0 ? 
+          "You have no appoinment" : 
+          appointments.map(appointment => (
             <tr key={appointment.id}>
-              <td>{appointment.AppointmentTicketNo}</td>
+              <td>{appointment.id}</td>
               <td>{appointment.FullName}</td>
               <td>{appointment.PhoneNo}</td>
               <td>{appointment.Doctor}</td>

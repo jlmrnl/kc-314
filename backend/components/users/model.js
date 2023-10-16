@@ -1,14 +1,17 @@
 
 module.exports = (sequelize, Sequelize) => {
+  //User Schema
   const Users = sequelize.define('users', {
+    //attributes
     UserFName: {
+      //data types
       type: Sequelize.STRING,
     },
     UserLName: {
       type: Sequelize.STRING,
     },
     Birthday: {
-      type: Sequelize.STRING,
+      type: Sequelize.DATE,
     },
     Age: {
       type: Sequelize.INTEGER,

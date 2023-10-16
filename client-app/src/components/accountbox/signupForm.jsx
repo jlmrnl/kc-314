@@ -17,15 +17,18 @@ function SignupForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+   try {
     axios
-      .post('http://localhost:5000/api/users', { UserFName, UserLName, Birthday, Age, UserEmail, UserPassword })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-    navigate('/');
+    .post('http://localhost:5000/api/users', { UserFName, UserLName, Birthday, Age, UserEmail, UserPassword })
+    .then((result) => navigate('/'))
+    .catch((err) => console.log(err));
+   } catch (err) {
+      alert(err)
+   }
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center" style={{width: '100%', maxWidth: 500}}>
       <Card>
         <Card.Body>
           <Card.Title>Sign Up</Card.Title>
@@ -37,6 +40,7 @@ function SignupForm() {
                 value={UserFName}
                 placeholder="First Name"
                 onChange={(e) => setFName(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="UserLName">
@@ -46,6 +50,7 @@ function SignupForm() {
                 value={UserLName}
                 placeholder="Last Name"
                 onChange={(e) => setLName(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="Birthday">
@@ -55,6 +60,7 @@ function SignupForm() {
                 value={Birthday}
                 placeholder="Birthday (yyyy-mm-dd)"
                 onChange={(e) => setBDay(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="Age">
@@ -64,6 +70,7 @@ function SignupForm() {
                 value={Age}
                 placeholder="Age"
                 onChange={(e) => setAge(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="UserEmail">
@@ -73,6 +80,7 @@ function SignupForm() {
                 value={UserEmail}
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </Form.Group>
             <Form.Group controlId="UserPassword">
@@ -82,10 +90,11 @@ function SignupForm() {
                 value={UserPassword}
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              Create User
+              Sign Up
             </Button>
             <Button variant="secondary m-2" onClick={() => navigate('/')}>
               Cancel
